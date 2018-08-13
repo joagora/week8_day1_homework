@@ -1,4 +1,5 @@
 import db.DBBook;
+import db.DBWriter;
 import models.Book;
 import models.Writer;
 
@@ -13,5 +14,7 @@ public class Runner {
         book.setNumberOfPages(30);
         DBBook.update(book);
         DBBook.delete(book1);
+
+        DBWriter.save(writer);
     }
 }
