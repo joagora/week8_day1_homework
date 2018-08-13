@@ -73,4 +73,17 @@ public class DBBook {
             session.close();
         }
     }
+
+    public static void delete(Book book){
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            session.delete(book);
+            transaction.commit();
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }

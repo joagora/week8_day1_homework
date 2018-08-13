@@ -12,5 +12,6 @@ public class Runner {
         DBBook.save(book1);
         book.setNumberOfPages(30);
         DBBook.update(book);
+        DBBook.delete(book1);
     }
 }
