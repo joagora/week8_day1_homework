@@ -11,6 +11,7 @@ public class Runner {
         DBBook.save(book);
         DBBook.save(book1);
 
-        System.out.println(DBBook.getAll());
+
+        System.out.println(DBBook.findById(1).getTitle());
     }
 }

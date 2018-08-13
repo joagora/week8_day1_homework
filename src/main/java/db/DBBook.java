@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -43,5 +44,20 @@ public class DBBook {
             session.close();
         }
         return results;
+    }
+
+    public static Book findById(int id){
+        Book result = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Criteria cr = session.createCriteria(Book.class);
+            cr.add(Restrictions.eq("id", id));
+            result = (Book) cr.uniqueResult();
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return result;
     }
 }
