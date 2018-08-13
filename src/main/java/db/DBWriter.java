@@ -34,7 +34,7 @@ public class DBWriter {
         try {
             Criteria cr = session.createCriteria(Writer.class);
             results = cr.list();
-        } catch (HibernateException ex) {
+        } catch(HibernateException ex) {
             ex.printStackTrace();
         } finally {
             session.close();
@@ -49,7 +49,7 @@ public class DBWriter {
             Criteria cr = session.createCriteria(Writer.class);
             cr.add(Restrictions.eq("id", id));
             foundWriter = (Writer) cr.uniqueResult();
-        } catch (HibernateException ex) {
+        } catch(HibernateException ex) {
             ex.printStackTrace();
         } finally {
             session.close();
@@ -63,7 +63,20 @@ public class DBWriter {
             transaction = session.beginTransaction();
             session.update(writer);
             transaction.commit();
-        } catch (HibernateException ex) {
+        } catch(HibernateException ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    public static void delete(Writer writer){
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            session.delete(writer);
+            transaction.commit();
+        } catch(HibernateException ex) {
             ex.printStackTrace();
         } finally {
             session.close();

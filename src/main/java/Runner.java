@@ -19,6 +19,6 @@ public class Runner {
         DBWriter.save(writer2);
         writer.setFirstName("Jon");
         DBWriter.update(writer);
-
+        DBWriter.delete(writer);
     }
 }
