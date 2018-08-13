@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -39,5 +40,20 @@ public class DBWriter {
             session.close();
         }
         return results;
+    }
+
+    public static Writer findById(int id){
+        Writer foundWriter = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Criteria cr = session.createCriteria(Writer.class);
+            cr.add(Restrictions.eq("id", id));
+            foundWriter = (Writer) cr.uniqueResult();
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return foundWriter;
     }
 }

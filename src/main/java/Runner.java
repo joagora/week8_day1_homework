@@ -17,6 +17,7 @@ public class Runner {
 
         DBWriter.save(writer);
         DBWriter.save(writer2);
-        System.out.println(DBWriter.getAll());
+        System.out.println(DBWriter.findById(1));
+
     }
 }
