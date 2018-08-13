@@ -60,4 +60,17 @@ public class DBBook {
         }
         return result;
     }
+
+    public static void update(Book book){
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            session.update(book);
+            transaction.commit();
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }

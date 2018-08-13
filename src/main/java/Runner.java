@@ -10,8 +10,7 @@ public class Runner {
 
         DBBook.save(book);
         DBBook.save(book1);
-
-
-        System.out.println(DBBook.findById(1).getTitle());
+        book.setNumberOfPages(30);
+        DBBook.update(book);
     }
 }
