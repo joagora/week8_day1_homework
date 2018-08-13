@@ -56,4 +56,17 @@ public class DBWriter {
         }
         return foundWriter;
     }
+
+    public static void update(Writer writer){
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            session.update(writer);
+            transaction.commit();
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }

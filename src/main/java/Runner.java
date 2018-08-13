@@ -13,11 +13,12 @@ public class Runner {
         DBBook.save(book1);
         book.setNumberOfPages(30);
         DBBook.update(book);
-        DBBook.delete(book1);
+//        DBBook.delete(book1);
 
         DBWriter.save(writer);
         DBWriter.save(writer2);
-        System.out.println(DBWriter.findById(1));
+        writer.setFirstName("Jon");
+        DBWriter.update(writer);
 
     }
 }
