@@ -2,9 +2,12 @@ package db;
 
 import models.HibernateUtil;
 import models.Writer;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.List;
 
 public class DBWriter {
 
@@ -22,5 +25,19 @@ public class DBWriter {
         } finally {
             session.close();
         }
+    }
+
+    public static List<Writer> getAll(){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Writer> results = null;
+        try {
+            Criteria cr = session.createCriteria(Writer.class);
+            results = cr.list();
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return results;
     }
 }

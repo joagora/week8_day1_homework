@@ -8,7 +8,7 @@ public class Runner {
         Book book = new Book("Everything is Illuminated", 120);
         Book book1 = new Book("Nineteen Eighty Four", 160);
         Writer writer = new Writer("Jonathan", "Safran Foer");
-
+        Writer writer2 = new Writer("George", "Orwell");
         DBBook.save(book);
         DBBook.save(book1);
         book.setNumberOfPages(30);
@@ -16,5 +16,7 @@ public class Runner {
         DBBook.delete(book1);
 
         DBWriter.save(writer);
+        DBWriter.save(writer2);
+        System.out.println(DBWriter.getAll());
     }
 }
