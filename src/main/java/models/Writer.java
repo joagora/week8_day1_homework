@@ -11,6 +11,10 @@ public class Writer {
         this.lastName = lastName;
     }
 
+    public Writer(){
+
+    }
+
     public int getId() {
         return id;
     }
