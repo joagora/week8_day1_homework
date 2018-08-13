@@ -1,5 +1,9 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="books")
 public class Book {
 
     private String title;
@@ -15,6 +19,9 @@ public class Book {
 
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -22,7 +29,7 @@ public class Book {
     public void setId(int id) {
         this.id = id;
     }
-
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -31,6 +38,7 @@ public class Book {
         this.title = title;
     }
 
+    @Column(name = "number_of_pages")
     public int getNumberOfPages() {
         return numberOfPages;
     }
