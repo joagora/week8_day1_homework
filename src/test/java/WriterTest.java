@@ -16,4 +16,9 @@ public class WriterTest {
     public void hasFirstName() {
         assertEquals("Jonathan", writer.getFirstName());
     }
+
+    @Test
+    public void hasLastName() {
+        assertEquals("Safran Foer", writer.getLastName());
+    }
 }
